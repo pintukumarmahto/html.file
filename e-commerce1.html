@@ -1,0 +1,694 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Pintu Kumar Mahto | Aesthetic Store</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background: #faf8ff;
+            color: #222;
+        }
+
+        /* NAVBAR */
+        header {
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255,255,255,0.92);
+            backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+
+        .navbar {
+            max-width: 1200px;
+            margin: auto;
+            padding: 16px 25px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 800;
+            background: linear-gradient(90deg,#ff4d8d,#7b61ff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 28px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: .3s;
+        }
+
+        .nav-links a:hover {
+            color: #ff4d8d;
+        }
+
+        .cart {
+            background: #222;
+            color: white;
+            padding: 9px 16px;
+            border-radius: 30px;
+            cursor: pointer;
+        }
+
+        /* HERO */
+        .hero {
+            min-height: 560px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 70px 8%;
+            background:
+                radial-gradient(circle at 10% 20%, #ffd6e8, transparent 30%),
+                radial-gradient(circle at 90% 80%, #d8d0ff, transparent 30%),
+                linear-gradient(135deg,#fff7fb,#f2efff);
+        }
+
+        .hero-text {
+            max-width: 570px;
+        }
+
+        .hero-text small {
+            color: #ff4d8d;
+            font-size: 16px;
+            font-weight: 600;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(40px,6vw,72px);
+            line-height: 1.05;
+            margin: 15px 0;
+        }
+
+        .hero-text h1 span {
+            background: linear-gradient(90deg,#ff4d8d,#7657ff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .hero-text p {
+            color: #666;
+            font-size: 17px;
+            margin-bottom: 25px;
+        }
+
+        .shop-btn {
+            display: inline-block;
+            padding: 14px 28px;
+            background: linear-gradient(90deg,#ff4d8d,#7657ff);
+            color: white;
+            text-decoration: none;
+            border-radius: 35px;
+            font-weight: 600;
+            box-shadow: 0 10px 25px rgba(118,87,255,.25);
+            transition: .3s;
+        }
+
+        .shop-btn:hover {
+            transform: translateY(-4px);
+        }
+
+        .hero-image {
+            width: 43%;
+            max-width: 500px;
+        }
+
+        .hero-image img {
+            width: 100%;
+            border-radius: 35px;
+            box-shadow: 0 25px 60px rgba(0,0,0,.18);
+        }
+
+        /* SECTION */
+        .section {
+            max-width: 1200px;
+            margin: auto;
+            padding: 80px 25px;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 45px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+        }
+
+        .section-title p {
+            color: #777;
+            margin-top: 8px;
+        }
+
+        /* CATEGORIES */
+        .categories {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-bottom: 40px;
+        }
+
+        .category {
+            padding: 10px 22px;
+            border: none;
+            border-radius: 30px;
+            background: white;
+            box-shadow: 0 5px 18px rgba(0,0,0,.08);
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .category:hover,
+        .category.active {
+            background: #222;
+            color: white;
+        }
+
+        /* PRODUCTS */
+        .products {
+            display: grid;
+            grid-template-columns: repeat(4,1fr);
+            gap: 25px;
+        }
+
+        .product {
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,.08);
+            transition: .35s;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 18px 40px rgba(0,0,0,.14);
+        }
+
+        .product-img {
+            height: 250px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: .5s;
+        }
+
+        .product:hover img {
+            transform: scale(1.08);
+        }
+
+        .badge {
+            position: absolute;
+            top: 15px;
+            left: 15px;
+            background: #ff4d8d;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+
+        .product-info {
+            padding: 20px;
+        }
+
+        .product-info h3 {
+            font-size: 18px;
+        }
+
+        .stars {
+            color: #ffb000;
+            margin: 7px 0;
+        }
+
+        .price {
+            font-size: 20px;
+            font-weight: 700;
+            color: #7b61ff;
+            margin-bottom: 15px;
+        }
+
+        .add-btn {
+            width: 100%;
+            padding: 11px;
+            border: none;
+            border-radius: 12px;
+            background: #222;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: .3s;
+        }
+
+        .add-btn:hover {
+            background: linear-gradient(90deg,#ff4d8d,#7657ff);
+        }
+
+        /* PROMO */
+        .promo {
+            margin: 20px 25px 70px;
+            border-radius: 30px;
+            padding: 60px;
+            text-align: center;
+            color: white;
+            background:
+                linear-gradient(90deg,rgba(255,77,141,.92),rgba(118,87,255,.92)),
+                url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80");
+            background-size: cover;
+            background-position: center;
+        }
+
+        .promo h2 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        .promo p {
+            margin-bottom: 22px;
+        }
+
+        .white-btn {
+            display: inline-block;
+            background: white;
+            color: #222;
+            padding: 12px 25px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* ABOUT */
+        .about {
+            text-align: center;
+            background: white;
+            padding: 70px 25px;
+        }
+
+        .about p {
+            max-width: 700px;
+            margin: 15px auto;
+            color: #666;
+            line-height: 1.8;
+        }
+
+        /* CONTACT */
+        .contact {
+            text-align: center;
+            padding: 70px 25px;
+            background: #f3f0ff;
+        }
+
+        .contact p {
+            margin: 10px;
+        }
+
+        .contact a {
+            color: #7657ff;
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        /* FOOTER */
+        footer {
+            background: #17151c;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+
+        footer span {
+            color: #ff4d8d;
+        }
+
+        /* RESPONSIVE */
+        @media(max-width: 950px) {
+            .products {
+                grid-template-columns: repeat(2,1fr);
+            }
+
+            .hero {
+                flex-direction: column;
+                text-align: center;
+                gap: 40px;
+            }
+
+            .hero-image {
+                width: 80%;
+            }
+        }
+
+        @media(max-width: 600px) {
+            .nav-links {
+                display: none;
+            }
+
+            .products {
+                grid-template-columns: 1fr;
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero-image {
+                width: 100%;
+            }
+
+            .promo {
+                padding: 40px 20px;
+            }
+
+            .promo h2 {
+                font-size: 28px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+<header>
+    <div class="navbar">
+
+        <div class="logo">
+            PintuStore ✨
+        </div>
+
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+
+        <div class="cart">
+            🛒 Cart <span id="cartCount">0</span>
+        </div>
+
+    </div>
+</header>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-text">
+
+        <small>✨ NEW COLLECTION 2026</small>
+
+        <h1>
+            Shop Your
+            <span>Style.</span>
+        </h1>
+
+        <p>
+            Discover beautiful fashion, accessories and lifestyle
+            products specially selected for you.
+        </p>
+
+        <a href="#products" class="shop-btn">
+            Explore Products →
+        </a>
+
+    </div>
+
+    <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=85"
+             alt="Shopping">
+    </div>
+
+</section>
+
+
+<!-- PRODUCTS -->
+<section class="section" id="products">
+
+    <div class="section-title">
+        <h2>Featured Products 🛍️</h2>
+        <p>Choose your favorite products</p>
+    </div>
+
+    <div class="categories">
+        <button class="category active">All</button>
+        <button class="category">Fashion</button>
+        <button class="category">Shoes</button>
+        <button class="category">Accessories</button>
+    </div>
+
+    <div class="products">
+
+        <!-- Product 1 -->
+        <div class="product">
+            <div class="product-img">
+                <span class="badge">NEW</span>
+                <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=700&q=80"
+                     alt="T-Shirt">
+            </div>
+
+            <div class="product-info">
+                <h3>Premium T-Shirt</h3>
+                <div class="stars">★★★★★</div>
+                <div class="price">₹499</div>
+                <button class="add-btn" onclick="addCart()">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Product 2 -->
+        <div class="product">
+            <div class="product-img">
+                <span class="badge">SALE</span>
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80"
+                     alt="Shoes">
+            </div>
+
+            <div class="product-info">
+                <h3>Premium Sneakers</h3>
+                <div class="stars">★★★★★</div>
+                <div class="price">₹1,299</div>
+                <button class="add-btn" onclick="addCart()">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Product 3 -->
+        <div class="product">
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=700&q=80"
+                     alt="Watch">
+            </div>
+
+            <div class="product-info">
+                <h3>Luxury Watch</h3>
+                <div class="stars">★★★★★</div>
+                <div class="price">₹1,899</div>
+                <button class="add-btn" onclick="addCart()">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Product 4 -->
+        <div class="product">
+            <div class="product-img">
+                <span class="badge">HOT</span>
+                <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&w=700&q=80"
+                     alt="Headphones">
+            </div>
+
+            <div class="product-info">
+                <h3>Wireless Headphones</h3>
+                <div class="stars">★★★★★</div>
+                <div class="price">₹999</div>
+                <button class="add-btn" onclick="addCart()">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Product 5 -->
+        <div class="product">
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=700&q=80"
+                     alt="Bag">
+            </div>
+
+            <div class="product-info">
+                <h3>Stylish Backpack</h3>
+                <div class="stars">★★★★☆</div>
+                <div class="price">₹799</div>
+                <button class="add-btn" onclick="addCart()">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+
+
+        <!-- Product 6 -->
+        <div class="product">
+            <div class="product-img">
+                <img src="https://images.unsplash.com/photo-1585386959984-a41552231693?auto=format&fit=crop&w=700&q=80"
+                     alt="Perfume">
+            </div>
+
+            <div class="product-info">
+                <h3>Luxury Perfume</h3>
+                <div class="stars">★★★★★</div>
+                <div class="price">₹699</div>
+                <button class="add-btn" onclick="addCart()">
+                    Add to Cart
+                </button>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- PROMOTION -->
+<section class="promo">
+
+    <h2>Special Offer 🎁</h2>
+
+    <p>
+        Get up to <strong>50% OFF</strong> on selected products.
+    </p>
+
+    <a href="#products" class="white-btn">
+        Shop Now
+    </a>
+
+</section>
+
+
+<!-- ABOUT -->
+<section class="about" id="about">
+
+    <div class="section-title">
+        <h2>About PintuStore</h2>
+    </div>
+
+    <p>
+        Welcome to PintuStore — a modern online shopping website
+        created by <strong>Pintu Kumar Mahto</strong>.
+    </p>
+
+    <p>
+        Our goal is to provide stylish, quality and affordable
+        products with a simple and beautiful shopping experience.
+    </p>
+
+</section>
+
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+
+    <div class="section-title">
+        <h2>Contact Me 📞</h2>
+    </div>
+
+    <p>
+        <strong>Name:</strong> Pintu Kumar Mahto
+    </p>
+
+    <p>
+        <strong>Email:</strong>
+        <a href="mailto:kpintu3637@gmail.com">
+            kpintu3637@gmail.com
+        </a>
+    </p>
+
+    <p>
+        <strong>Mobile:</strong>
+        <a href="tel:+91 9135120336">
+            +91 9135120336
+        </a>
+    </p>
+
+    <p>
+        <strong>Links:</strong>
+        <a href="https://www.instagram.com/" target="_blank">Instagram</a>
+        |
+        <a href="https://www.linkedin.com/" target="_blank">LinkedIn</a>
+        |
+        <a href="https://github.com/" target="_blank">GitHub</a>
+    </p>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    <p>
+        © 2026 <span>Pintu Kumar Mahto</span> |
+        All Rights Reserved
+    </p>
+
+</footer>
+
+
+<!-- JAVASCRIPT -->
+<script>
+
+    let cart = 0;
+
+    function addCart() {
+
+        cart++;
+
+        document.getElementById("cartCount").innerText = cart;
+
+        alert("✨ Product added to your cart!");
+
+    }
+
+</script>
+
+</body>
+</html>
+```
